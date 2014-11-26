@@ -1,3 +1,3 @@
-from django.test import TestCase
+# -*- coding: utf-8 -*-
 
-# Create your tests here.
+from __future__ import absolute_import, unicode_literals
