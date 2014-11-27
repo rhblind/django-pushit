@@ -55,4 +55,4 @@ class Logger(object):
 
 # Global logger
 logging.captureWarnings(True)
-logger = Logger.get_logger(name="pushit")
+logger = Logger.get_logger()

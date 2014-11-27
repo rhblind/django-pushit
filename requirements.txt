@@ -2,3 +2,5 @@ Django==1.7.1
 psycopg2==2.5.4
 boto==2.34.0
 celery==3.1.17
+Sphinx==1.2.3
+sphinx-rtd-theme==0.1.6
