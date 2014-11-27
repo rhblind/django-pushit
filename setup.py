@@ -32,7 +32,7 @@ setup(
         "mock",
         "coverage"
     ],
-    test_suite="testsuite.run_tests.start",
+    test_suite="tests.run_tests.start",
     classifiers=[
         "Operating System :: OS Independent",
         "Development Status :: 1 - Planning",
