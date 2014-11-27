@@ -13,7 +13,7 @@ from pushit.backends import PushBackend
 
 class SNSPushBackend(PushBackend):
     """
-
+    Push notification backend for SNS
     """
 
     required_options = ["REGION", "AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY"]
