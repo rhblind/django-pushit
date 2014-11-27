@@ -2,37 +2,25 @@
 
 from __future__ import absolute_import, unicode_literals
 
-
 try:
     from boto import sns
 except ImportError:
-    raise ImportError("You must install boto in order to use the SNSPushEngine.")
+    raise ImportError("You must install boto in order to use the SNSPushBackend.")
 
-from django.core.exceptions import ImproperlyConfigured
-
-from pushit import logger
-from pushit.backends import PushEngine
+from pushit import Logger
+from pushit.backends import PushBackend
 
 
-class SNSPushEngine(PushEngine):
+class SNSPushBackend(PushBackend):
     """
 
     """
 
     required_options = ["REGION", "AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY"]
 
-    def __init__(self, connection_alias, **options):
-
-        for opt in self.required_options:
-            if not opt in options:
-                raise ImproperlyConfigured("You must specify '%s' in the connection OPTIONS for "
-                                           "this backend." % opt)
-
-        super(SNSPushEngine, self).__init__(connection_alias, **options)
-        self.region = options["REGION"]
-        self.aws_access_key_id = options["AWS_ACCESS_KEY_ID"]
-        self.aws_secret_access_key = options["AWS_SECRET_ACCESS_KEY"]
-
+    def __init__(self, connection_alias, **settings):
+        super(SNSPushBackend, self).__init__(connection_alias, **settings)
+        self.logger = Logger.get_logger("pushit.sns")
         self._connection = None
 
     @property

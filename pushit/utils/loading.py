@@ -23,19 +23,19 @@ def load_backend(backend_path):
     Loads a backend for sending push notifications.
 
     Requires a ``backend_path`` which is a string resembeling a Python import
-    path, pointing to a ``PushEngine`` subclass. The build-in options available
+    path, pointing to a ``PushBackend`` subclass. The build-in options available
     includes:
 
-        * pushit.backends.apns.APNSPushEngine (Apple Push Notification Service)
-        * pushit.backends.gcm.GCMPushEngine (Google Cloud Messaging)
-        * pushit.backends.mpns.MPNSPushEngine (Microsoft Push Notification Service)
-        * pushit.backend.sns.SNSPushEngine (Simple Notification Service)
+        * pushit.backends.apns.APNSPushBackend (Apple Push Notification Service)
+        * pushit.backends.gcm.GCMPushBackend (Google Cloud Messaging)
+        * pushit.backends.mpns.MPNSPushBackend (Microsoft Push Notification Service)
+        * pushit.backend.sns.SNSPushBackend (Simple Notification Service)
     """
 
     bits = backend_path.split(".")
     if len(bits) < 2:
         raise ImproperlyConfigured("The configured backend '%s' is not a complete Python path to "
-                                   "a PushEngine subclass." % backend_path)
+                                   "a `pushit.backends.PushBackend` subclass." % backend_path)
 
     return import_class(backend_path)
 
@@ -51,17 +51,14 @@ class ConnectionHandler(object):
         except KeyError:
             raise ImproperlyConfigured("The key '%s' isn't an available connection." % alias)
 
-        # Depending on what backend the user has chosen,
-        # we should do some checks to make sure that all available options
-        # has been provided.
-        # EDIT: Nope, that's the backends responsiblity!
+        return alias, settings
 
     def __getitem__(self, alias):
         if alias in self._connections:
             return self._connections[alias]
 
-        self.ensure_defaults(alias)
-        self._connections[alias] = load_backend(self.connection_settings[alias]["ENGINE"])(using=alias)
+        alias, options = self.ensure_defaults(alias)
+        self._connections[alias] = load_backend(self.connection_settings[alias]["ENGINE"])(alias, **options)
         return self._connections[alias]
 
     def __setitem__(self, alias, connection):
