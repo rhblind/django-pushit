@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
 # django-pushit documentation build configuration file, created by
@@ -12,6 +12,8 @@
 #
 # All configuration values have a default; values that are commented out
 # serve to show the default.
+
+from __future__ import absolute_import, unicode_literals
 
 import os
 import sys
