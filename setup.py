@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from ez_setup import use_setuptools
-use_setuptools()
-
-from setuptools import setup
-
+try:
+    from setuptools import setup
+except ImportError:
+    from ez_setup import use_setuptools
+    use_setuptools()
+    from setuptools import setup
 
 setup(
     name="django-pushit",
@@ -32,6 +33,7 @@ setup(
         "mock",
         "coverage"
     ],
+    zip_safe=False,
     test_suite="tests.run_tests.start",
     classifiers=[
         "Operating System :: OS Independent",
