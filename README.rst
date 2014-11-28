@@ -4,9 +4,6 @@ django-pushit
 
 Push notification framework for Django.
 
-This library is heavily influenced by the application design architecture from
-django-haystack.
-
 Planned features
 ----------------
 
