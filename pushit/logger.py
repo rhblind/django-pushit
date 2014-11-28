@@ -3,7 +3,7 @@
 from __future__ import absolute_import, unicode_literals
 
 import logging
-import logging.config
+from django.utils.log import dictConfig
 
 
 class Logger(object):
@@ -20,12 +20,14 @@ class Logger(object):
         """
         Sets up a default DEBUG console logger if no other logger
         is configured.
+
+        :rtype : object
         """
         if name is not None:
             cls.logger_name = name
 
         if cls.logger is None:
-            logging.config.dictConfig({
+            dictConfig({
                 "version": 1,
                 "disable_existing_loggers": False,
                 "formatters": {
@@ -53,6 +55,8 @@ class Logger(object):
         return cls.logger
 
 
+if hasattr(logging, "captureWarnings"):  # pragma: no cover
+    logging.captureWarnings(True)
+
 # Global logger
-logging.captureWarnings(True)
 logger = Logger.get_logger()
