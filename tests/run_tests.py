@@ -14,7 +14,7 @@ def start(argv=None):
 
     if argv is None:
         argv = [
-            "nosetests", "--with-coverage", "--cover-package=pushit",
+            "nosetests", "--cover-branches", "--with-coverage", "--cover-package=pushit",
             "--cover-erase", "--verbose"
         ]
 

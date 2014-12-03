@@ -61,9 +61,6 @@ class ConnectionHandler(object):
         self._connections[alias] = load_backend(self.connection_settings[alias]["ENGINE"])(alias, **options)
         return self._connections[alias]
 
-    def __setitem__(self, alias, connection):
-        setattr(self._connections, alias, connection)
-
     def __iter__(self):
         return iter(self._connections)
 

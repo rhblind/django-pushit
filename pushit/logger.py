@@ -59,4 +59,4 @@ if hasattr(logging, "captureWarnings"):  # pragma: no cover
     logging.captureWarnings(True)
 
 # Global logger
-logger = Logger.get_logger()
+logger = Logger.get_logger(name="pushit")

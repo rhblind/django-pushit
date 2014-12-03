@@ -10,6 +10,10 @@ from pushit.utils import loading
 
 class LoadBackendTestCase(TestCase):
 
+    def test_load_base_push_backend(self):
+        backend = loading.load_backend("pushit.backends.PushBackend")
+        self.assertEqual(backend.__name__, "PushBackend")
+
     def test_load_apns_backend(self):
         backend = loading.load_backend("pushit.backends.apns.APNSPushBackend")
         self.assertEqual(backend.__name__, "APNSPushBackend")
