@@ -1,59 +1,25 @@
-# Created by .gitignore support plugin (hsz.mobi)
+# Sphinx documentation
+docs/_build
+docs/_static
 
-### Python template
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
+# SQLite databases
+*.sqlite
+*.sqlite3
 
-# C extensions
-*.so
-
-# Distribution / packaging
-.Python
-env/
-build/
-develop-eggs/
-dist/
-eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.coverage
-.cache
-nosetests.xml
-coverage.xml
-
-# Translations
+# Translation files
 *.mo
 *.pot
 
-# Django stuff:
+# Unit testing and coverage
+.tox
+.coverage
+.cache
+nosetests.xml
+coverage.html
+htmlcov/
+
+# Log files
 *.log
+
+# And some various stuff that should not be in source control
 local_settings.py
-
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-target/
-
-db.sqlite3
