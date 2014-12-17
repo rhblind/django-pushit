@@ -4,6 +4,12 @@ django-pushit
 
 Push notification framework for Django.
 
+Build Status
+------------
+
+.. image:: https://travis-ci.org/rhblind/django-pushit.svg?branch=master
+    :target: https://travis-ci.org/rhblind/django-pushit
+
 Note
 ====
 
