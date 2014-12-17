@@ -86,3 +86,6 @@ class ImportClassTestCase(TestCase):
     def test_load_existing_path(self):
         backend = loading.import_class("pushit.backends.PushBackend")
         self.assertEqual(backend.__name__, "PushBackend")
+
+    def test_load_nonexisting_path(self):
+        self.assertRaises(ImportError, loading.import_class, "pushit.backends.FooBackend")

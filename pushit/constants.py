@@ -3,4 +3,4 @@
 from __future__ import absolute_import, unicode_literals
 
 
-DEFAULT_ALIAS = "default"
+DEFAULT_ALIAS = "default"  # pragma: no cover
